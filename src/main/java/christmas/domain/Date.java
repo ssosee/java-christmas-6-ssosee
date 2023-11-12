@@ -1,13 +1,17 @@
 package christmas.domain;
 
-import christmas.domain.constant.DateConstant;
+import christmas.validation.DateValidationHandler;
 
 public class Date {
     private final int date;
+    private final DateValidationHandler dateValidationHandler;
 
-    public Date(String date) {
-        validation(date);
-        this.date = Integer.parseInt(date);
+    public Date(String readDate, DateValidationHandler dateValidationHandler) {
+        this.dateValidationHandler = dateValidationHandler;
+
+        validation(readDate);
+
+        this.date = Integer.parseInt(readDate);
     }
 
     public int getDate() {
@@ -15,27 +19,7 @@ public class Date {
     }
 
     private void validation(String date) {
-        validationNumeric(date);
-        validationRange(Integer.parseInt(date));
-    }
-
-    private void validationRange(int date) {
-        if(!isRange(date)) {
-            throw new IllegalArgumentException(DateConstant.INVALID_DATE_MESSAGE);
-        }
-    }
-
-    private boolean isRange(int date) {
-        return date <= DateConstant.MAX_DATE_RANGE && date >= DateConstant.MIN_DATE_RANGE;
-    }
-
-    private void validationNumeric(String date) {
-        if(!isNumeric(date)) {
-            throw new IllegalArgumentException(DateConstant.INVALID_DATE_MESSAGE);
-        }
-    }
-
-    private boolean isNumeric(String date) {
-        return date.chars().allMatch(Character::isDigit);
+        this.dateValidationHandler.validationNumeric(date);
+        this.dateValidationHandler.validationRange(Integer.parseInt(date));
     }
 }
