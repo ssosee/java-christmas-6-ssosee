@@ -8,7 +8,7 @@ public class WeekendEvent extends Event {
     }
 
     @Override
-    int discount(int day) {
+    public int discount(int day) {
         if (Date.isWeekendEvent(day)) {
             int count = super.getTotalMenuCountByMenuCategory(MenuCategory.MAIN_COURSE);
             return count * WeekendEventConstant.DISCOUNT;

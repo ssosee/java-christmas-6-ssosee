@@ -8,7 +8,7 @@ public class SpecialEvent extends Event {
     }
 
     @Override
-    int discount(int day) {
+    public int discount(int day) {
         if (Date.isSpecialEvent(day)) {
             return SpecialEventConstant.DISCOUNT;
         }
