@@ -13,6 +13,6 @@ public class WeekendEvent extends Event {
             int count = super.getTotalMenuCountByMenuCategory(MenuCategory.MAIN_COURSE);
             return count * WeekendEventConstant.DISCOUNT;
         }
-        return 0;
+        return NO_DISCOUNT;
     }
 }

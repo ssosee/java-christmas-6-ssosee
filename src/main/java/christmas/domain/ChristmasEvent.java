@@ -13,6 +13,6 @@ public class ChristmasEvent extends Event {
         if (Date.isChristmasEvent(day)) {
             return ChristmasEventConstant.DEFAULT_DISCOUNT + ChristmasEventConstant.DAILY_INCREASE_DISCOUNT * (day - 1);
         }
-        return 0;
+        return NO_DISCOUNT;
     }
 }

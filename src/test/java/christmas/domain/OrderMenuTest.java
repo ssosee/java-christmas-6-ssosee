@@ -116,9 +116,9 @@ class OrderMenuTest {
         OrderMenu orderMenu = new OrderMenu(readOrderMenu, orderMenuValidationHandler);
 
         // when
-        String orderMenus = orderMenu.getOrderMenusByOutputViewFormat();
+        String orderMenus = orderMenu.generateOrderMenusByOutputViewFormat();
 
         // then
-        assertThat(orderMenus).isEqualTo("티본스테이크 1개\n바비큐립 3개\n초코케이크 2개\n");
+        assertThat(orderMenus).isEqualTo("티본스테이크 1개\n바비큐립 3개\n초코케이크 2개");
     }
 }

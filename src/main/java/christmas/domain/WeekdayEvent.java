@@ -14,6 +14,6 @@ public class WeekdayEvent extends Event {
             int count = super.getTotalMenuCountByMenuCategory(MenuCategory.DESERT);
             return count * WeekdayEventConstant.DISCOUNT;
         }
-        return 0;
+        return NO_DISCOUNT;
     }
 }

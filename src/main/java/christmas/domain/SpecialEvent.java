@@ -12,6 +12,6 @@ public class SpecialEvent extends Event {
         if (Date.isSpecialEvent(day)) {
             return SpecialEventConstant.DISCOUNT;
         }
-        return 0;
+        return NO_DISCOUNT;
     }
 }

@@ -1,10 +1,12 @@
 package christmas.domain;
 
 import christmas.domain.constant.OrderMenuConstant;
+import christmas.io.OutputView;
 import christmas.utils.StringUtils;
 import christmas.validation.OrderMenuValidationHandler;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderMenu {
     private final EnumMap<Menu, Integer> menus = new EnumMap<>(Menu.class);
@@ -54,5 +56,12 @@ public class OrderMenu {
                 .filter(menu -> menu.getMenuCategory().equals(menuCategory))
                 .mapToInt(menus::get)
                 .sum();
+    }
+
+    public String generateOrderMenusByOutputViewFormat() {
+        return this.menus.entrySet().stream()
+                .map(menus -> String.format(OutputView.ORDER_MENU_FORMAT,
+                        menus.getKey().getKrName(), menus.getValue()))
+                .collect(Collectors.joining(OutputView.NEW_LINE));
     }
 }
