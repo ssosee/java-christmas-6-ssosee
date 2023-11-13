@@ -107,4 +107,18 @@ class OrderMenuTest {
         // then
         assertThat(count).isEqualTo(expectedCount);
     }
+
+    @Test
+    @DisplayName("주문 메뉴를 출력 포맷에 맞는 문자열로 반환한다.")
+    void getOrderMenusByOutputViewFormat() {
+        // given
+        String readOrderMenu = "티본스테이크-1,바비큐립-3,초코케이크-2";
+        OrderMenu orderMenu = new OrderMenu(readOrderMenu, orderMenuValidationHandler);
+
+        // when
+        String orderMenus = orderMenu.getOrderMenusByOutputViewFormat();
+
+        // then
+        assertThat(orderMenus).isEqualTo("티본스테이크 1개\n바비큐립 3개\n초코케이크 2개\n");
+    }
 }
