@@ -2,7 +2,7 @@ package christmas.validation;
 
 import christmas.domain.Menu;
 import christmas.domain.MenuCategory;
-import christmas.domain.constant.MenuConstant;
+import christmas.domain.constant.OrderMenuConstant;
 import christmas.utils.StringUtils;
 import java.util.EnumMap;
 import java.util.regex.Pattern;
@@ -52,7 +52,7 @@ public class OrderMenuValidationHandler {
     }
 
     private boolean isValidQuantity(int quantity) {
-        return quantity <= MenuConstant.MAX_QUANTITY && quantity >= MenuConstant.MIN_QUANTITY;
+        return quantity <= OrderMenuConstant.MAX_QUANTITY && quantity >= OrderMenuConstant.MIN_QUANTITY;
     }
 
     private boolean isAllBeverage(EnumMap<Menu, Integer> menus) {

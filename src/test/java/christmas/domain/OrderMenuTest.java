@@ -92,4 +92,19 @@ class OrderMenuTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(OrderMenuValidationHandler.INVALID_MENU_MESSAGE);
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"MAIN_COURSE:2", "DESERT:2", "BEVERAGE:6", "APPETIZER:3"}, delimiter = ':')
+    @DisplayName("메뉴 카테고리에 맞는 총 메뉴 갯수를 구한다.")
+    void getTotalMenuCountByMenuCategory(MenuCategory category, int expectedCount) {
+        // given
+        String readOrderMenu = "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-3,레드와인-3,양송이수프-1,타파스-2";
+        OrderMenu orderMenu = new OrderMenu(readOrderMenu, orderMenuValidationHandler);
+
+        // when
+        int count = orderMenu.getTotalMenuCountByMenuCategory(category);
+
+        // then
+        assertThat(count).isEqualTo(expectedCount);
+    }
 }

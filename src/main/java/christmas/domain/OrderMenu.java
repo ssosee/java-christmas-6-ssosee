@@ -1,16 +1,13 @@
 package christmas.domain;
 
+import christmas.domain.constant.OrderMenuConstant;
 import christmas.utils.StringUtils;
 import christmas.validation.OrderMenuValidationHandler;
 import java.util.EnumMap;
 import java.util.List;
 
 public class OrderMenu {
-    private static final String HYPHEN = "-";
-    private static final int NAME_INDEX = 0;
-    private static final int QUANTITY_INDEX = 1;
-
-    private EnumMap<Menu, Integer> menus = new EnumMap<>(Menu.class);
+    private final EnumMap<Menu, Integer> menus = new EnumMap<>(Menu.class);
     private final OrderMenuValidationHandler menusValidationHandler;
 
     public OrderMenu(String readMenus, OrderMenuValidationHandler menusValidationHandler) {
@@ -20,9 +17,9 @@ public class OrderMenu {
         for (String menu : menus) {
             this.menusValidationHandler.validationPattern(menu);
 
-            String[] splitMenu = menu.split(HYPHEN);
-            String name = splitMenu[NAME_INDEX];
-            String quantity = splitMenu[QUANTITY_INDEX];
+            String[] splitMenu = menu.split(StringUtils.HYPHEN);
+            String name = splitMenu[OrderMenuConstant.NAME_INDEX];
+            String quantity = splitMenu[OrderMenuConstant.QUANTITY_INDEX];
 
             validateAndAddMenu(name, quantity);
         }
@@ -49,6 +46,13 @@ public class OrderMenu {
     public int getTotalPrice() {
         return this.menus.entrySet().stream()
                 .mapToInt(menu -> menu.getKey().getPrice() * menu.getValue())
+                .sum();
+    }
+
+    public int getTotalMenuCountByMenuCategory(MenuCategory menuCategory) {
+        return this.menus.keySet().stream()
+                .filter(menu -> menu.getMenuCategory().equals(menuCategory))
+                .mapToInt(menus::get)
                 .sum();
     }
 }

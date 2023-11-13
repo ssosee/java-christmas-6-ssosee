@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.validation.DateValidationHandler;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -32,5 +33,15 @@ class DateTest {
         assertThatThrownBy(() -> new Date(input, dateValidationHandler))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(DateValidationHandler.INVALID_DATE_MESSAGE);
+    }
+
+    @Test
+    @DisplayName("")
+    void test() {
+        // given
+
+        // when
+
+        // then
     }
 }

@@ -5,8 +5,8 @@ import java.util.List;
 
 public class StringUtils {
 
-    private static final String COMMA = ",";
-    private static final String HYPHEN = "-";
+    public static final String COMMA = ",";
+    public static final String HYPHEN = "-";
 
     private StringUtils() {
     }
