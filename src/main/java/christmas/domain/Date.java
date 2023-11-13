@@ -44,4 +44,8 @@ public class Date {
         this.dateValidationHandler.validationNumeric(date);
         this.dateValidationHandler.validationRange(Integer.parseInt(date));
     }
+
+    public int getDay() {
+        return day;
+    }
 }
