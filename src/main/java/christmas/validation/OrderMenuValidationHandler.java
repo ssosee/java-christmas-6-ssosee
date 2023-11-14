@@ -9,8 +9,15 @@ import java.util.regex.Pattern;
 
 public class OrderMenuValidationHandler {
 
-    public static final String INVALID_MENU_MESSAGE = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
+    public static final String INVALID_MENU_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final String MENU_PATTERN = "^[가-힣]+-\\d+\\s*$";
+
+
+    public void validationHasText(String menu) {
+        if (!StringUtils.hasText(menu)) {
+            throw new IllegalArgumentException(INVALID_MENU_MESSAGE);
+        }
+    }
 
     public void validationPattern(String menu) {
         if (!Pattern.matches(MENU_PATTERN, menu.trim())) {

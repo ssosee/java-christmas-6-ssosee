@@ -41,6 +41,7 @@ public class Date {
     }
 
     private void validation(String date) {
+        this.dateValidationHandler.validationHasText(date);
         this.dateValidationHandler.validationNumeric(date);
         this.dateValidationHandler.validationRange(Integer.parseInt(date));
     }

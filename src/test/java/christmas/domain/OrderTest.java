@@ -87,7 +87,7 @@ class OrderTest {
         Order order = new Order(events, orderMenu, date);
 
         // when
-        int totalBenefitAmount = order.getPaymentAmount();
+        int totalBenefitAmount = order.getTotalOrderMenuPriceAfterDiscount();
 
         // then
         assertThat(totalBenefitAmount).isEqualTo(135754);

@@ -22,10 +22,10 @@ public abstract class Event {
     }
 
     public int getTotalOrderMenuPriceBeforeDiscount() {
-        return orderMenu.getTotalPrice();
+        return orderMenu.getTotalOrderMenuPriceBeforeDiscount();
     }
 
     public boolean isApplyEvent() {
-        return orderMenu.getTotalPrice() >= MIN_TOTAL_ORDER_AMOUNT_FOR_EVENT;
+        return orderMenu.getTotalOrderMenuPriceBeforeDiscount() >= MIN_TOTAL_ORDER_AMOUNT_FOR_EVENT;
     }
 }

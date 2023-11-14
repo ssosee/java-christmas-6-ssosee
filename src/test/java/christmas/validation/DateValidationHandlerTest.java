@@ -44,7 +44,26 @@ class DateValidationHandlerTest {
     @DisplayName("1이상 31이하의 숫자가 아니면 예외가 발생한다.")
     void validationRangeException(int date) {
         // given // when // then
-        assertThatCode(() -> dateValidationHandler.validationRange(date))
+        assertThatThrownBy(() -> dateValidationHandler.validationRange(date))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DateValidationHandler.INVALID_DATE_MESSAGE);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "1", "일", "!"})
+    @DisplayName("공백이거나 빈값이 아니면 예외가 발생하지 않는다.")
+    void validationHasText(String date) {
+        // given // when // then
+        assertThatCode(() -> dateValidationHandler.validationHasText(date))
+                .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    @DisplayName("공백이거나 빈값이면 예외가 발생한다.")
+    void validationHasTextException(String date) {
+        // given // when // then
+        assertThatThrownBy(() -> dateValidationHandler.validationHasText(date))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(DateValidationHandler.INVALID_DATE_MESSAGE);
     }

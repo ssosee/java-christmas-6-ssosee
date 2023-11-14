@@ -27,7 +27,7 @@ class OrderMenuTest {
         OrderMenu orderMenu = new OrderMenu(readOrderMenu, orderMenuValidationHandler);
 
         // when
-        int totalPrice = orderMenu.getTotalPrice();
+        int totalPrice = orderMenu.getTotalOrderMenuPriceBeforeDiscount();
 
         // then
         assertThat(totalPrice).isEqualTo(expectedTotalPrice);

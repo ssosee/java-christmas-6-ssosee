@@ -15,49 +15,49 @@ public class OutputView {
     private static final String TOTAL_ORDER_MENU_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
     private static final String DEC_EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
     public static final String ORDER_MENU_FORMAT = "%s %d개";
-    private static final String TOTAL_ORDER_MENU_PRICE_BEFORE_DISCOUNT_FORMAT = "%s원";
-    private static final String TOTAL_ORDER_MENU_PRICE_AFTER_DISCOUNT_FORMAT = "-%s원";
+    private static final String TOTAL_ORDER_MENU_PRICE_FORMAT = "%s원";
+    private static final String TOTAL_BENEFIT_AMOUNT_FORMAT = "-%s원";
     public static final String BENEFIT_HISTORY_FORMAT = "%s: -%s원";
 
     public void printEventPreviewGuide(int day) {
         String message = String.format(EVENT_PREVIEW_GUIDE_FORMAT, day);
-        System.out.println(message);
+        System.out.println(message + NEW_LINE);
     }
 
     public void printOrderMenus(String orderMenus) {
-        System.out.println(ORDER_MENU_MESSAGE + NEW_LINE + orderMenus);
+        System.out.println(ORDER_MENU_MESSAGE + NEW_LINE + orderMenus + NEW_LINE);
     }
 
     public void printTotalOrderMenuPriceBeforeDiscount(int totalOrderMenuPriceBeforeDiscount) {
         DecimalFormat decimalFormat = new DecimalFormat(PRICE_FORMAT);
         String priceFormat = decimalFormat.format(totalOrderMenuPriceBeforeDiscount);
-        String message = String.format(TOTAL_ORDER_MENU_PRICE_BEFORE_DISCOUNT_FORMAT, priceFormat);
+        String message = String.format(TOTAL_ORDER_MENU_PRICE_FORMAT, priceFormat);
 
-        System.out.println(TOTAL_ORDER_MENU_PRICE_BEFORE_DISCOUNT_MESSAGE + NEW_LINE + message);
+        System.out.println(TOTAL_ORDER_MENU_PRICE_BEFORE_DISCOUNT_MESSAGE + NEW_LINE + message + NEW_LINE);
     }
 
     public void printGiftMenu(String giftMenu) {
-        System.out.println(GIFT_MENU_MESSAGE + NEW_LINE + giftMenu);
+        System.out.println(GIFT_MENU_MESSAGE + NEW_LINE + giftMenu + NEW_LINE);
     }
 
     public void printBenefitHistory(String benefitHistory) {
-        System.out.println(BENEFIT_HISTORY_MESSAGE + NEW_LINE + benefitHistory);
+        System.out.println(BENEFIT_HISTORY_MESSAGE + NEW_LINE + benefitHistory + NEW_LINE);
     }
 
     public void printTotalBenefitAmount(int totalBenefitAmount) {
         DecimalFormat decimalFormat = new DecimalFormat(PRICE_FORMAT);
         String priceFormat = decimalFormat.format(totalBenefitAmount);
-        String message = String.format(TOTAL_ORDER_MENU_PRICE_AFTER_DISCOUNT_FORMAT, priceFormat);
+        String message = String.format(TOTAL_BENEFIT_AMOUNT_FORMAT, priceFormat);
 
-        System.out.println(TOTAL_BENEFIT_AMOUNT_MESSAGE + NEW_LINE + message);
+        System.out.println(TOTAL_BENEFIT_AMOUNT_MESSAGE + NEW_LINE + message + NEW_LINE);
     }
 
     public void printTotalOrderMenuPriceAfterDiscount(int totalOrderMenuPriceAfterDiscount) {
         DecimalFormat decimalFormat = new DecimalFormat(PRICE_FORMAT);
         String priceFormat = decimalFormat.format(totalOrderMenuPriceAfterDiscount);
-        String message = String.format(TOTAL_ORDER_MENU_PRICE_AFTER_DISCOUNT_FORMAT, priceFormat);
+        String message = String.format(TOTAL_ORDER_MENU_PRICE_FORMAT, priceFormat);
 
-        System.out.println(TOTAL_ORDER_MENU_PRICE_AFTER_DISCOUNT_MESSAGE + NEW_LINE + message);
+        System.out.println(TOTAL_ORDER_MENU_PRICE_AFTER_DISCOUNT_MESSAGE + NEW_LINE + message + NEW_LINE);
     }
 
     public void printDecEventBadge(String eventBadge) {

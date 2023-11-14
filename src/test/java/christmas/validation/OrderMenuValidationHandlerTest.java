@@ -149,4 +149,23 @@ class OrderMenuValidationHandlerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(OrderMenuValidationHandler.INVALID_MENU_MESSAGE);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "1", "일", "!"})
+    @DisplayName("공백이거나 빈값이 아니면 예외가 발생하지 않는다.")
+    void validationHasText(String date) {
+        // given // when // then
+        assertThatCode(() -> orderMenuValidationHandler.validationHasText(date))
+                .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    @DisplayName("공백이거나 빈값이면 예외가 발생한다.")
+    void validationHasTextException(String date) {
+        // given // when // then
+        assertThatThrownBy(() -> orderMenuValidationHandler.validationHasText(date))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(OrderMenuValidationHandler.INVALID_MENU_MESSAGE);
+    }
 }

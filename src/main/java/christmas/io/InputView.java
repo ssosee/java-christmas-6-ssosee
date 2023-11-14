@@ -13,16 +13,28 @@ public class InputView {
 
 
     public Date readDate() {
-        System.out.println(READ_DATE_MESSAGE);
-        String readDate = Console.readLine();
+        while (true) {
+            try {
+                System.out.println(READ_DATE_MESSAGE);
+                String readDate = Console.readLine();
 
-        return new Date(readDate, new DateValidationHandler());
+                return new Date(readDate, new DateValidationHandler());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public OrderMenu readOrderMenu() {
-        System.out.println(READ_MENU_MESSAGE);
-        String readOrderMenu = Console.readLine();
+        while (true) {
+            try {
+                System.out.println(READ_MENU_MESSAGE);
+                String readOrderMenu = Console.readLine();
 
-        return new OrderMenu(readOrderMenu, new OrderMenuValidationHandler());
+                return new OrderMenu(readOrderMenu, new OrderMenuValidationHandler());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }

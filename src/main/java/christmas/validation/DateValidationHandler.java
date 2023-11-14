@@ -5,7 +5,13 @@ import christmas.utils.StringUtils;
 
 public class DateValidationHandler {
 
-    public static final String INVALID_DATE_MESSAGE = "유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+    public static final String INVALID_DATE_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+
+    public void validationHasText(String date) {
+        if (!StringUtils.hasText(date)) {
+            throw new IllegalArgumentException(INVALID_DATE_MESSAGE);
+        }
+    }
 
     public void validationRange(int date) {
         if (!isRange(date)) {

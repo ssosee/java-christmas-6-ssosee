@@ -19,15 +19,15 @@ public class Order {
     }
 
     public int getTotalOrderPriceBeforeDiscount() {
-        return orderMenu.getTotalPrice();
+        return orderMenu.getTotalOrderMenuPriceBeforeDiscount();
     }
 
     public int getTotalBenefitAmount() {
-        return getTotalDiscounts() + getGiftEventDiscount(orderMenu.getTotalPrice());
+        return getTotalDiscounts() + getGiftEventDiscount(orderMenu.getTotalOrderMenuPriceBeforeDiscount());
     }
 
-    public int getPaymentAmount() {
-        return orderMenu.getTotalPrice() - getTotalDiscounts();
+    public int getTotalOrderMenuPriceAfterDiscount() {
+        return orderMenu.getTotalOrderMenuPriceBeforeDiscount() - getTotalDiscounts();
     }
 
     private int getTotalDiscounts() {
@@ -37,7 +37,7 @@ public class Order {
     }
 
     public String generateGiftMenu(Menu menu, int giftQuantity) {
-        if (isGiftEvent(orderMenu.getTotalPrice())) {
+        if (isGiftEvent(orderMenu.getTotalOrderMenuPriceBeforeDiscount())) {
             return String.format(OutputView.ORDER_MENU_FORMAT, menu.getKrName(), giftQuantity);
         }
         return OutputView.NOT_EXIST;
@@ -47,11 +47,13 @@ public class Order {
         DecimalFormat decimalFormat = new DecimalFormat(OutputView.PRICE_FORMAT);
         String benefitHistory = getBenefitHistory(decimalFormat);
 
-        if (isGiftEvent(orderMenu.getTotalPrice())) {
+        if (isGiftEvent(orderMenu.getTotalOrderMenuPriceBeforeDiscount())) {
             String giftBenefitMessage = String.format(OutputView.BENEFIT_HISTORY_FORMAT,
                     GiftEventConstant.NAME, decimalFormat.format(GiftEventConstant.DISCOUNT));
 
             return benefitHistory + OutputView.NEW_LINE + giftBenefitMessage;
+        } else if (benefitHistory.isBlank()) {
+            return OutputView.NOT_EXIST;
         }
 
         return benefitHistory;

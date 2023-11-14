@@ -15,6 +15,8 @@ public class OrderMenu {
     public OrderMenu(String readMenus, OrderMenuValidationHandler menusValidationHandler) {
         this.menusValidationHandler = menusValidationHandler;
 
+        this.menusValidationHandler.validationHasText(readMenus);
+
         List<String> menus = StringUtils.splitCommaToListString(readMenus);
         for (String menu : menus) {
             this.menusValidationHandler.validationPattern(menu);
@@ -45,7 +47,7 @@ public class OrderMenu {
                 .sum();
     }
 
-    public int getTotalPrice() {
+    public int getTotalOrderMenuPriceBeforeDiscount() {
         return this.menus.entrySet().stream()
                 .mapToInt(menu -> menu.getKey().getPrice() * menu.getValue())
                 .sum();

@@ -24,4 +24,11 @@ public class StringUtils {
     public static boolean isNumeric(String str) {
         return str.chars().allMatch(Character::isDigit);
     }
+
+    public static boolean hasText(String str) {
+        if (str.isBlank() || str.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 }
