@@ -59,4 +59,8 @@ public class OutputView {
 
         System.out.println(TOTAL_ORDER_MENU_PRICE_AFTER_DISCOUNT_MESSAGE + NEW_LINE + message);
     }
+
+    public void printDecEventBadge(String eventBadge) {
+        System.out.print(DEC_EVENT_BADGE_MESSAGE + NEW_LINE + eventBadge);
+    }
 }
