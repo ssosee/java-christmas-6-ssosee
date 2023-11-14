@@ -18,6 +18,10 @@ public class Order {
         this.date = date;
     }
 
+    public int getTotalOrderPriceBeforeDiscount() {
+        return orderMenu.getTotalPrice();
+    }
+
     public int getTotalBenefitAmount() {
         return getTotalDiscounts() + getGiftEventDiscount(orderMenu.getTotalPrice());
     }
